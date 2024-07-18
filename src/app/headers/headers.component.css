@@ -31,8 +31,9 @@ h1 {
 
 p {
   margin: 0;
-  font-size: 0.8rem;
+  font-size: 1.6rem;
   text-wrap: balance;
+  color: white;
 }
 
 @media (min-width: 768px) {
