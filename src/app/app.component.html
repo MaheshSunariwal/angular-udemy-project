@@ -2,21 +2,37 @@
 
 <main>
   <ul id = 'users'>
-    <li>
-      <app-user [id] = 'users[0].id' [avatar]= 'users[0].avatar' [name] = 'users[0].name' (select)="Onselectuser($event)"></app-user>
-    </li>
-    <li>
-      <app-user [id] = 'users[1].id' [avatar]= 'users[1].avatar' [name] = 'users[1].name' (select)="Onselectuser($event)"></app-user>
-    </li>
-    <li>
-      <app-user [id] = 'users[2].id' [avatar]= 'users[2].avatar' [name] = 'users[2].name' (select) = "Onselectuser($event)" ></app-user>
-    </li>
-    <li>
-      <app-user [id] = 'users[3].id' [avatar]= 'users[3].avatar' [name] = 'users[3].name' (select) = "Onselectuser($event)"></app-user>
+    <!-- @for (user of users ; track user.id) {
+      <li>
+        <app-user [user] = 'user' (select)="Onselectuser($event)"></app-user>
+      </li>
+
+    } -->
+
+    <li *ngFor="let user of users">
+      <app-user [user] = 'user' (select) = 'Onselectuser($event)'></app-user>
     </li>
 
+
   </ul>
-  <app-tasks [name] = 'selecteduser?.name' ></app-tasks>
+  <!-- @if (selecteduser) {
+
+    <app-tasks [name] = 'selecteduser ? selecteduser.name : ""' ></app-tasks>
+
+  }
+
+  @else {
+    <p id = "fallback" > select the user to see their tasks</p>
+  } -->
+
+  <app-tasks *ngIf="selecteduser ; else fallback" [name] = 'selecteduser.name'></app-tasks>
+
+  
+  <ng-template #fallback>
+    <p id = 'any'> click on user to see their task </p>
+  </ng-template>
+
+
 </main>
 
 

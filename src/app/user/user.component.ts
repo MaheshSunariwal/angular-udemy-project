@@ -12,20 +12,25 @@ import { dummy_users } from '../users_data';
 })
 export class UserComponent {
   // selecteduser = dummy_users[randomindex]
+  @Input() user !: {
+    id : string;
+    name : string ;
+    avatar : string ;
+  };
 
-  @Input() avatar !: string ;
-  @Input() name !: string ;
-  @Input() id !: string ;
+  // @Input() avatar !: string ;
+  // @Input() name !: string ;
+  // @Input() id !: string ;
 
   @Output() select = new EventEmitter<string>() ;
 
   get imagepath() {
-    return 'assets/users-photo/' + this.avatar
+    return 'assets/users-photo/' + this.user.avatar
   }
 
   onselectuser() {
-    this.select.emit(this.id)
-    console.log(this.name)
+    this.select.emit(this.user.id)
+    console.log(this.user.name)
   }
 
 }
