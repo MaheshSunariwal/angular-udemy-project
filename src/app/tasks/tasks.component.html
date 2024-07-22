@@ -1,1 +1,19 @@
-<p  > {{name}}</p>
+
+
+
+<section id = 'tasks' >
+  <header>
+    <h2  > {{name}}'s task</h2>
+    <menu>
+      <button>task</button>
+    </menu>
+  </header>
+
+  <ul>
+    <li *ngFor=" let task of selectedusertask">
+      <app-assigntask [tasklist] = 'task' ></app-assigntask>
+    </li>
+
+  </ul>
+</section>
+

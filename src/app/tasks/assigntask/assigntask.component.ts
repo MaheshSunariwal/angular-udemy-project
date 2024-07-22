@@ -1,0 +1,20 @@
+import { Component, Input } from '@angular/core';
+
+type tasklist = {
+  id : string ;
+  userId : string ;
+  title : string ;
+  Summary : string ;
+  Duedate : string ;
+}
+@Component({
+  selector: 'app-assigntask',
+  standalone: true,
+  imports: [],
+  templateUrl: './assigntask.component.html',
+  styleUrl: './assigntask.component.css'
+})
+export class AssigntaskComponent {
+  @Input() tasklist !: tasklist ;
+
+}

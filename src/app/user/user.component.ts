@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { dummy_users } from '../users_data';
 
+import { user } from './user.model';
 
 // const randomindex = Math.floor(Math.random()*dummy_users.length)
 @Component({
@@ -12,11 +12,7 @@ import { dummy_users } from '../users_data';
 })
 export class UserComponent {
   // selecteduser = dummy_users[randomindex]
-  @Input() user !: {
-    id : string;
-    name : string ;
-    avatar : string ;
-  };
+  @Input() user !: user ;
 
   // @Input() avatar !: string ;
   // @Input() name !: string ;
