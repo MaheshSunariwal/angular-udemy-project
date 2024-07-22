@@ -10,7 +10,7 @@
     } -->
 
     <li *ngFor="let user of users">
-      <app-user [user] = 'user' (select) = 'Onselectuser($event)'></app-user>
+      <app-user [user] = 'user' [selected] = "user.id === selecteduserid " (select) = 'Onselectuser($event)'></app-user>
     </li>
 
 
