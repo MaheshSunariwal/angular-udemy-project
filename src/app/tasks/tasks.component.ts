@@ -52,6 +52,15 @@ export class TasksComponent {
     let a = this.tasks.filter((task) => task.userId === this.userid)
     console.log(a)
     return a
+
+
+
+  }
+
+  completetask(id : String) {
+    console.log(id)
+    this.tasks = this.tasks.filter((task) => task.id !== id )
+
   }
 
 }
