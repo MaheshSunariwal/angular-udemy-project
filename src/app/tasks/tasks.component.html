@@ -1,17 +1,17 @@
 
-
+<app-newtask *ngIf="istaskadded" (canceladdtask) = 'oncanceladdtask()' (taskdata)='addtask($event)'></app-newtask>
 
 <section id = 'tasks' >
   <header>
     <h2  > {{name}}'s task</h2>
     <menu>
-      <button>task</button>
+      <button (click) = 'onaddingtask()' >add task</button>
     </menu>
   </header>
 
   <ul>
     <li *ngFor=" let task of selectedusertask">
-      <app-assigntask [tasklist] = 'task' (complete) = 'completetask($event)' ></app-assigntask>
+      <app-assigntask [tasklist] = 'task' (complete) = 'completetask($event)'  ></app-assigntask>
     </li>
 
   </ul>

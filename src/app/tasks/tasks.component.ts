@@ -2,10 +2,12 @@ import { Component } from '@angular/core';
 import { Input } from '@angular/core';
 import { AssigntaskComponent } from "./assigntask/assigntask.component";
 import { NgFor } from '@angular/common';
+import { NewtaskComponent } from './newtask/newtask.component';
+import { NgIf } from '@angular/common';
 @Component({
   selector: 'app-tasks',
   standalone: true,
-  imports: [AssigntaskComponent,NgFor],
+  imports: [AssigntaskComponent,NgFor,NewtaskComponent,NgIf],
   templateUrl: './tasks.component.html',
   styleUrl: './tasks.component.css'
 })
@@ -13,6 +15,7 @@ export class TasksComponent {
 
   @Input() userid !: string ;
   @Input() name !: string ;
+  istaskadded = false ;
 
 
 
@@ -61,6 +64,29 @@ export class TasksComponent {
     console.log(id)
     this.tasks = this.tasks.filter((task) => task.id !== id )
 
+  }
+
+  onaddingtask() {
+    this.istaskadded = true ;
+  }
+
+  addtask(taskdata : { title : string , summary : string , duedate : string}) {
+    this.tasks.unshift({
+      id : new Date().getTime().toString() ,
+      userId : this.userid ,
+      title : taskdata.title ,
+      Summary : taskdata.summary ,
+      Duedate : taskdata.duedate
+
+    })
+
+    this.istaskadded = false ;
+
+  }
+
+  oncanceladdtask() {
+    console.log(this.istaskadded)
+    this.istaskadded = false ;
   }
 
 }
